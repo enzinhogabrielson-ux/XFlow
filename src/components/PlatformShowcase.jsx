@@ -1,59 +1,20 @@
 import { Fragment } from "react";
 import { sx } from "../utils/sx";
 import { useReveal } from "../hooks/useReveal";
+import { useLanguage } from "../i18n/LanguageContext";
 
-const CHECK_ITEMS = [
-  "Comercial",
-  "Financeiro",
-  "Gestão Organizacional",
-  "Comunicação Externa",
-  "Administração",
+const ROW_META = [
+  { stageColor: "#46626C", tagBg: "rgba(0,156,187,0.1)", tagColor: "#007D96" },
+  { stageColor: "#46626C", tagBg: "rgba(255,197,0,0.15)", tagColor: "#8A6D00" },
+  { stageColor: "#46626C", tagBg: "rgba(0,156,187,0.1)", tagColor: "#007D96" },
+  { stageColor: "#1E9E6A", stageWeight: 600, tagBg: "rgba(30,158,106,0.12)", tagColor: "#1E9E6A" },
 ];
-
-const TABLE_ROWS = [
-  {
-    contact: "Mariana Costa · Agência Prisma",
-    stage: "Proposta enviada",
-    stageColor: "#46626C",
-    value: "R$ 2.400",
-    tag: "Inbound",
-    tagBg: "rgba(0,156,187,0.1)",
-    tagColor: "#007D96",
-  },
-  {
-    contact: "Diego Ramos · Log Mais",
-    stage: "Negociação",
-    stageColor: "#46626C",
-    value: "R$ 5.100",
-    tag: "Indicação",
-    tagBg: "rgba(255,197,0,0.15)",
-    tagColor: "#8A6D00",
-  },
-  {
-    contact: "Paula Andrade · Clínica Vitta",
-    stage: "Reunião marcada",
-    stageColor: "#46626C",
-    value: "R$ 1.750",
-    tag: "Inbound",
-    tagBg: "rgba(0,156,187,0.1)",
-    tagColor: "#007D96",
-  },
-  {
-    contact: "Rafael Nunes · TecServ",
-    stage: "✓ Fechado",
-    stageColor: "#1E9E6A",
-    stageWeight: 600,
-    value: "R$ 3.900",
-    tag: "Cliente",
-    tagBg: "rgba(30,158,106,0.12)",
-    tagColor: "#1E9E6A",
-  },
-];
-
-const TABS = ["Comercial", "Financeiro", "Gestão Organizacional", "Comunicação Externa", "Administração"];
 
 export default function PlatformShowcase() {
   const revealRef = useReveal();
+  const { t } = useLanguage();
+  const ps = t.platformShowcase;
+  const rows = ps.rows.map((row, i) => ({ ...row, ...ROW_META[i] }));
 
   return (
     <section
@@ -78,7 +39,7 @@ export default function PlatformShowcase() {
                 "width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,#FFC500,#009CBB)"
               )}
             />
-            A PLATAFORMA
+            {ps.badge}
           </div>
           <h2
             className="xf-h2"
@@ -86,26 +47,24 @@ export default function PlatformShowcase() {
               "margin:0;font-size:40px;line-height:1.12;font-weight:650;letter-spacing:-0.03em;color:#06222D;text-wrap:balance"
             )}
           >
-            Toda a operação conectada em uma única plataforma
+            {ps.title}
           </h2>
           <p
             style={sx(
               "margin:20px 0 0;font-size:16.5px;line-height:1.65;color:#46626C;text-wrap:pretty"
             )}
           >
-            Com o XFlow, sua empresa não precisa mais depender de planilhas soltas, conversas
-            perdidas e sistemas desconectados.
+            {ps.paragraph1}
           </p>
           <p
             style={sx(
               "margin:14px 0 0;font-size:16.5px;line-height:1.65;color:#46626C;text-wrap:pretty"
             )}
           >
-            Você acompanha contatos, tarefas, projetos, contas, fluxo de caixa, agenda, equipe e
-            comunicação em uma experiência simples e centralizada.
+            {ps.paragraph2}
           </p>
           <div style={sx("display:flex;flex-direction:column;gap:11px;margin-top:28px")}>
-            {CHECK_ITEMS.map((label) => (
+            {ps.checkItems.map((label) => (
               <span
                 key={label}
                 style={sx(
@@ -172,7 +131,7 @@ export default function PlatformShowcase() {
                 "display:flex;gap:4px;padding:12px 14px;background:#F8FAFB;border-bottom:1px solid rgba(0,49,65,0.08)"
               )}
             >
-              {TABS.map((tab, i) => (
+              {ps.tabs.map((tab, i) => (
                 <span
                   key={tab}
                   style={sx(
@@ -193,14 +152,14 @@ export default function PlatformShowcase() {
                 )}
               >
                 <span style={sx("font-size:13px;font-weight:600;color:#06222D")}>
-                  Contatos e oportunidades
+                  {ps.tableTitle}
                 </span>
                 <span
                   style={sx(
                     "font-family:'Geist Mono',monospace;font-size:9.5px;color:#009CBB;border:1px solid rgba(0,156,187,0.3);border-radius:999px;padding:3px 9px"
                   )}
                 >
-                  324 ATIVOS
+                  {ps.activeBadge}
                 </span>
               </div>
               <div
@@ -213,30 +172,30 @@ export default function PlatformShowcase() {
                     "background:#F8FAFB;padding:8px 12px;font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#6B8089"
                   )}
                 >
-                  CONTATO
+                  {ps.columns.contact}
                 </div>
                 <div
                   style={sx(
                     "background:#F8FAFB;padding:8px 12px;font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#6B8089"
                   )}
                 >
-                  ETAPA
+                  {ps.columns.stage}
                 </div>
                 <div
                   style={sx(
                     "background:#F8FAFB;padding:8px 12px;font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#6B8089"
                   )}
                 >
-                  VALOR
+                  {ps.columns.value}
                 </div>
                 <div
                   style={sx(
                     "background:#F8FAFB;padding:8px 12px;font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#6B8089"
                   )}
                 >
-                  TAG
+                  {ps.columns.tag}
                 </div>
-                {TABLE_ROWS.map((row) => (
+                {rows.map((row) => (
                   <Fragment key={row.contact}>
                     <div
                       style={sx(

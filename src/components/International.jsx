@@ -1,54 +1,39 @@
 import { sx } from "../utils/sx";
 import { useReveal } from "../hooks/useReveal";
+import { useLanguage } from "../i18n/LanguageContext";
 
-const CARDS = [
-  { kind: "text", value: "PT", label: "Português" },
-  { kind: "text", value: "EN", label: "Inglês" },
-  { kind: "text", value: "ES", label: "Espanhol" },
-  {
-    kind: "icon",
-    label: "Multiempresa",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ verticalAlign: "middle" }}>
-        <rect x="2" y="5" width="10" height="12" rx="2" stroke="#7FD4E4" strokeWidth="1.5" />
-        <rect x="8" y="2" width="10" height="12" rx="2" stroke="#7FD4E4" strokeWidth="1.5" fill="#003141" />
-      </svg>
-    ),
-  },
-  {
-    kind: "icon",
-    label: "Multiusuário",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ verticalAlign: "middle" }}>
-        <circle cx="7" cy="7" r="3" stroke="#7FD4E4" strokeWidth="1.5" />
-        <circle cx="14" cy="9" r="2.4" stroke="#7FD4E4" strokeWidth="1.5" />
-        <path
-          d="M2 17c0-2.8 2.2-4.5 5-4.5s5 1.7 5 4.5M13 13.2c2.3.2 4 1.7 4 3.8"
-          stroke="#7FD4E4"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
-  },
-  {
-    kind: "icon",
-    label: "Atendimento internacional",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ verticalAlign: "middle" }}>
-        <circle cx="10" cy="10" r="7.5" stroke="#7FD4E4" strokeWidth="1.5" />
-        <path
-          d="M2.5 10h15M10 2.5c2.2 2 3.4 4.6 3.4 7.5S12.2 15.5 10 17.5M10 2.5c-2.2 2-3.4 4.6-3.4 7.5s1.2 5.5 3.4 7.5"
-          stroke="#7FD4E4"
-          strokeWidth="1.5"
-        />
-      </svg>
-    ),
-  },
+const ICONS = [
+  null,
+  null,
+  null,
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ verticalAlign: "middle" }}>
+    <rect x="2" y="5" width="10" height="12" rx="2" stroke="#7FD4E4" strokeWidth="1.5" />
+    <rect x="8" y="2" width="10" height="12" rx="2" stroke="#7FD4E4" strokeWidth="1.5" fill="#003141" />
+  </svg>,
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ verticalAlign: "middle" }}>
+    <circle cx="7" cy="7" r="3" stroke="#7FD4E4" strokeWidth="1.5" />
+    <circle cx="14" cy="9" r="2.4" stroke="#7FD4E4" strokeWidth="1.5" />
+    <path
+      d="M2 17c0-2.8 2.2-4.5 5-4.5s5 1.7 5 4.5M13 13.2c2.3.2 4 1.7 4 3.8"
+      stroke="#7FD4E4"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+  </svg>,
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ verticalAlign: "middle" }}>
+    <circle cx="10" cy="10" r="7.5" stroke="#7FD4E4" strokeWidth="1.5" />
+    <path
+      d="M2.5 10h15M10 2.5c2.2 2 3.4 4.6 3.4 7.5S12.2 15.5 10 17.5M10 2.5c-2.2 2-3.4 4.6-3.4 7.5s1.2 5.5 3.4 7.5"
+      stroke="#7FD4E4"
+      strokeWidth="1.5"
+    />
+  </svg>,
 ];
 
 export default function International() {
   const revealRef = useReveal();
+  const { t } = useLanguage();
+  const cards = t.international.cards.map((card, i) => ({ ...card, icon: ICONS[i] }));
 
   return (
     <section style={sx("position:relative;background:#003141;overflow:hidden")}>
@@ -75,7 +60,7 @@ export default function International() {
                 "width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,#FFC500,#009CBB)"
               )}
             />
-            INTERNACIONAL
+            {t.international.badge}
           </div>
           <h2
             className="xf-h2"
@@ -83,25 +68,24 @@ export default function International() {
               "margin:0;font-size:40px;line-height:1.12;font-weight:650;letter-spacing:-0.03em;color:#FFFFFF;text-wrap:balance"
             )}
           >
-            Um CRM para empresas que vendem em diferentes países
+            {t.international.title}
           </h2>
           <p style={sx("margin:20px 0 0;font-size:16.5px;line-height:1.65;color:#B9CFD6;text-wrap:pretty")}>
-            O XFlow XLENT foi desenvolvido para operar em diferentes idiomas e mercados.
+            {t.international.paragraph1}
           </p>
           <p style={sx("margin:14px 0 0;font-size:16.5px;line-height:1.65;color:#B9CFD6;text-wrap:pretty")}>
-            A plataforma está disponível em português, inglês e espanhol, facilitando a adoção por
-            equipes, parceiros e clientes em diferentes países.
+            {t.international.paragraph2}
           </p>
         </div>
         <div className="xf-grid-3" style={sx("display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px")}>
-          {CARDS.map((card) => (
+          {cards.map((card) => (
             <div
               key={card.label}
               style={sx(
                 "background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:22px 18px;text-align:center"
               )}
             >
-              {card.kind === "text" ? (
+              {card.value ? (
                 <div style={sx("font-family:'Geist Mono',monospace;font-size:20px;font-weight:700;color:#FFC500")}>
                   {card.value}
                 </div>

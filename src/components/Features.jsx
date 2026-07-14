@@ -1,13 +1,11 @@
 import { sx } from "../utils/sx";
 import { useReveal } from "../hooks/useReveal";
+import { useLanguage } from "../i18n/LanguageContext";
 
-const CARDS = [
+const ICON_META = [
   {
-    title: "Comercial",
     iconBg: "rgba(0,156,187,0.1)",
     dotColor: "#009CBB",
-    text: "Controle leads, contatos, tags, pipeline, agenda, serviços e performance comercial.",
-    items: ["Contatos", "Tags", "Serviços", "Pipeline", "Agenda", "VoIP", "Performance"],
     icon: (
       <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
         <path
@@ -22,19 +20,8 @@ const CARDS = [
     ),
   },
   {
-    title: "Financeiro",
     iconBg: "rgba(255,197,0,0.14)",
     dotColor: "#FFC500",
-    text: "Tenha mais controle sobre entradas, saídas, fluxo e indicadores financeiros.",
-    items: [
-      "Funcionários",
-      "Fornecedores",
-      "Contas a pagar",
-      "Contas a receber",
-      "Fluxo de caixa",
-      "DRE",
-      "XlentFinanceIA",
-    ],
     icon: (
       <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
         <circle cx="7.5" cy="7.5" r="6" stroke="#B8860B" strokeWidth="1.5" />
@@ -48,11 +35,8 @@ const CARDS = [
     ),
   },
   {
-    title: "Gestão Organizacional",
     iconBg: "rgba(0,156,187,0.1)",
     dotColor: "#009CBB",
-    text: "Organize tarefas, projetos, ordens de serviço e calendário interno.",
-    items: ["Gestão de tarefas e projetos", "Tarefas", "Projetos", "Ordens de serviço", "Calendário"],
     icon: (
       <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
         <rect x="1.5" y="1.5" width="5" height="5" rx="1.5" stroke="#009CBB" strokeWidth="1.4" />
@@ -63,11 +47,8 @@ const CARDS = [
     ),
   },
   {
-    title: "Comunicação Externa",
     iconBg: "rgba(0,156,187,0.1)",
     dotColor: "#009CBB",
-    text: "Centralize conversas, conexões, templates e automações.",
-    items: ["Conversas", "Conexões", "Templates", "Automações"],
     icon: (
       <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
         <path
@@ -81,11 +62,8 @@ const CARDS = [
     ),
   },
   {
-    title: "Administração",
     iconBg: "rgba(0,156,187,0.1)",
     dotColor: "#009CBB",
-    text: "Gerencie usuários, setores, cargos, documentos, permissões e controle de jornada.",
-    items: ["Usuários", "Setores", "Cargos", "Customização", "Controle de jornada", "Documentos", "Perfil"],
     icon: (
       <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
         <circle cx="7.5" cy="7.5" r="6" stroke="#009CBB" strokeWidth="1.4" />
@@ -103,6 +81,8 @@ const CARDS = [
 
 export default function Features() {
   const revealRef = useReveal();
+  const { t } = useLanguage();
+  const cards = t.features.cards.map((card, i) => ({ ...card, ...ICON_META[i] }));
 
   return (
     <section
@@ -121,7 +101,7 @@ export default function Features() {
                 "width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,#FFC500,#009CBB)"
               )}
             />
-            FUNCIONALIDADES
+            {t.features.badge}
           </div>
           <h2
             className="xf-h2"
@@ -129,14 +109,14 @@ export default function Features() {
               "margin:0;font-size:40px;line-height:1.12;font-weight:650;letter-spacing:-0.03em;color:#06222D;text-wrap:balance"
             )}
           >
-            O XFlow XLENT centraliza sua operação
+            {t.features.title}
           </h2>
           <p style={sx("margin:18px 0 0;font-size:16.5px;line-height:1.65;color:#46626C")}>
-            Uma plataforma completa para transformar organização em crescimento.
+            {t.features.subtitle}
           </p>
         </div>
         <div className="xf-grid-5" style={sx("display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:56px")}>
-          {CARDS.map((card) => (
+          {cards.map((card) => (
             <div
               key={card.title}
               style={sx(

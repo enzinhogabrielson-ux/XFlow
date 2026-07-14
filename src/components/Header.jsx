@@ -1,7 +1,11 @@
 import { sx } from "../utils/sx";
 import xflowWhite from "../assets/xflow-white.png";
+import { useLanguage } from "../i18n/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Header() {
+  const { t } = useLanguage();
+
   return (
     <header
       style={sx(
@@ -17,7 +21,7 @@ export default function Header() {
         <a href="#hero" style={sx("display:flex;align-items:center;flex:none;text-decoration:none")}>
           <img
             src={xflowWhite}
-            alt="XFlow — CRM e Automação Comercial"
+            alt={t.header.logoAlt}
             style={sx("height:32px;display:block")}
           />
         </a>
@@ -32,7 +36,7 @@ export default function Header() {
               "white-space:nowrap;color:rgba(255,255,255,0.78);font-size:13.5px;font-weight:500;text-decoration:none;transition:color 0.2s"
             )}
           >
-            Funcionalidades
+            {t.header.nav.features}
           </a>
           <a
             href="#para-quem"
@@ -41,7 +45,7 @@ export default function Header() {
               "white-space:nowrap;color:rgba(255,255,255,0.78);font-size:13.5px;font-weight:500;text-decoration:none;transition:color 0.2s"
             )}
           >
-            Para quem é
+            {t.header.nav.forWhom}
           </a>
           <a
             href="#preco"
@@ -50,19 +54,11 @@ export default function Header() {
               "white-space:nowrap;color:rgba(255,255,255,0.78);font-size:13.5px;font-weight:500;text-decoration:none;transition:color 0.2s"
             )}
           >
-            Preço
+            {t.header.nav.pricing}
           </a>
         </nav>
-        <div style={sx("display:flex;align-items:center;gap:10px;flex:none")}>
-          <a
-            href="https://crm.xlentbrasil.com"
-            className="hv-white xf-header-login"
-            style={sx(
-              "white-space:nowrap;flex:none;color:rgba(255,255,255,0.85);font-size:13.5px;font-weight:500;text-decoration:none;padding:9px 10px;border-radius:999px;transition:color 0.2s"
-            )}
-          >
-            Entrar na plataforma
-          </a>
+        <div className="xf-header-actions" style={sx("display:flex;align-items:center;gap:10px;flex:none")}>
+          <LanguageSwitcher />
           <a
             href="#agendar"
             className="hv-outline-b"
@@ -70,7 +66,7 @@ export default function Header() {
               "white-space:nowrap;flex:none;display:inline-flex;align-items:center;color:rgba(255,255,255,0.9);font-size:13.5px;font-weight:600;text-decoration:none;padding:9px 16px;border-radius:999px;border:1px solid rgba(255,255,255,0.28);transition:border-color 0.2s,background 0.2s"
             )}
           >
-            Agendar apresentação
+            {t.header.schedule}
           </a>
           <a
             href="#ativar"
@@ -79,7 +75,7 @@ export default function Header() {
               "white-space:nowrap;flex:none;display:inline-flex;align-items:center;background:#FFC500;color:#003141;font-size:13.5px;font-weight:700;text-decoration:none;padding:10px 18px;border-radius:999px;box-shadow:0 6px 18px rgba(255,197,0,0.35);transition:background 0.2s,transform 0.2s"
             )}
           >
-            Assine agora
+            {t.header.subscribe}
           </a>
         </div>
       </div>

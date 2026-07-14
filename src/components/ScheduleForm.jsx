@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { sx } from "../utils/sx";
 import { useReveal } from "../hooks/useReveal";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const fieldLabel = sx("display:flex;flex-direction:column;gap:6px;font-size:12.5px;font-weight:600;color:#334E58");
 const fieldInput = sx(
@@ -12,6 +13,8 @@ const fieldSelect = sx(
 
 export default function ScheduleForm() {
   const revealRef = useReveal();
+  const { t } = useLanguage();
+  const s = t.scheduleForm;
   const [sent, setSent] = useState(false);
 
   function handleSubmit(e) {
@@ -39,7 +42,7 @@ export default function ScheduleForm() {
                 "width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,#FFC500,#009CBB)"
               )}
             />
-            AGENDAMENTO
+            {s.badge}
           </div>
           <h2
             className="xf-h2"
@@ -47,18 +50,13 @@ export default function ScheduleForm() {
               "margin:0;font-size:40px;line-height:1.12;font-weight:650;letter-spacing:-0.03em;color:#06222D;text-wrap:balance"
             )}
           >
-            Agende uma apresentação do XFlow
+            {s.title}
           </h2>
           <p style={sx("margin:20px 0 0;font-size:16.5px;line-height:1.65;color:#46626C;text-wrap:pretty")}>
-            Preencha os dados abaixo e nossa equipe entrará em contato para apresentar a plataforma
-            e entender como o XFlow pode ajudar sua operação.
+            {s.subtitle}
           </p>
           <div style={sx("display:flex;flex-direction:column;gap:12px;margin-top:30px")}>
-            {[
-              "Atendimento em português, inglês e espanhol",
-              "Apresentação guiada da plataforma",
-              "Sem compromisso de contratação",
-            ].map((label) => (
+            {s.bullets.map((label) => (
               <span key={label} style={sx("display:flex;align-items:center;gap:10px;font-size:14.5px;color:#334E58")}>
                 <span style={sx("color:#009CBB;font-weight:700")}>✓</span> {label}
               </span>
@@ -74,88 +72,75 @@ export default function ScheduleForm() {
           {!sent ? (
             <form onSubmit={handleSubmit} className="xf-form-grid" style={sx("display:grid;grid-template-columns:1fr 1fr;gap:16px")}>
               <label style={fieldLabel}>
-                Nome completo
-                <input type="text" name="nome" required placeholder="Seu nome" style={fieldInput} />
+                {s.fields.nome}
+                <input type="text" name="nome" required placeholder={s.fields.nomePlaceholder} style={fieldInput} />
               </label>
               <label style={fieldLabel}>
-                E-mail profissional
-                <input type="email" name="email" required placeholder="voce@empresa.com" style={fieldInput} />
+                {s.fields.email}
+                <input type="email" name="email" required placeholder={s.fields.emailPlaceholder} style={fieldInput} />
               </label>
               <label style={fieldLabel}>
-                WhatsApp
-                <input type="tel" name="whatsapp" required placeholder="(00) 00000-0000" style={fieldInput} />
+                {s.fields.whatsapp}
+                <input type="tel" name="whatsapp" required placeholder={s.fields.whatsappPlaceholder} style={fieldInput} />
               </label>
               <label style={fieldLabel}>
-                Nome da empresa
-                <input type="text" name="empresa" required placeholder="Sua empresa" style={fieldInput} />
+                {s.fields.empresa}
+                <input type="text" name="empresa" required placeholder={s.fields.empresaPlaceholder} style={fieldInput} />
               </label>
               <label style={fieldLabel}>
-                País
+                {s.fields.pais}
                 <select name="pais" style={fieldSelect}>
-                  <option>Brasil</option>
-                  <option>Portugal</option>
-                  <option>Estados Unidos</option>
-                  <option>Espanha</option>
-                  <option>México</option>
-                  <option>Argentina</option>
-                  <option>Outro</option>
+                  {s.fields.paisOptions.map((opt) => (
+                    <option key={opt}>{opt}</option>
+                  ))}
                 </select>
               </label>
               <label style={fieldLabel}>
-                Idioma de preferência
+                {s.fields.idioma}
                 <select name="idioma" style={fieldSelect}>
-                  <option>Português</option>
-                  <option>Inglês</option>
-                  <option>Espanhol</option>
+                  {s.fields.idiomaOptions.map((opt) => (
+                    <option key={opt}>{opt}</option>
+                  ))}
                 </select>
               </label>
               <label style={fieldLabel}>
-                Segmento da empresa
+                {s.fields.segmento}
                 <select name="segmento" style={fieldSelect}>
-                  <option>Serviços</option>
-                  <option>Agência</option>
-                  <option>Consultoria</option>
-                  <option>Infoprodutos</option>
-                  <option>Comércio</option>
-                  <option>Indústria</option>
-                  <option>Outro</option>
+                  {s.fields.segmentoOptions.map((opt) => (
+                    <option key={opt}>{opt}</option>
+                  ))}
                 </select>
               </label>
               <label style={fieldLabel}>
-                Quantidade de usuários desejada
+                {s.fields.usuarios}
                 <select name="usuarios" style={fieldSelect}>
-                  <option>1 a 5</option>
-                  <option>6 a 15</option>
-                  <option>16 a 50</option>
-                  <option>Mais de 50</option>
+                  {s.fields.usuariosOptions.map((opt) => (
+                    <option key={opt}>{opt}</option>
+                  ))}
                 </select>
               </label>
               <label style={fieldLabel}>
-                Principal necessidade da empresa
+                {s.fields.necessidade}
                 <select name="necessidade" style={fieldSelect}>
-                  <option>Organizar contatos e leads</option>
-                  <option>Melhorar o controle comercial</option>
-                  <option>Controlar financeiro</option>
-                  <option>Organizar tarefas e projetos</option>
-                  <option>Automatizar atendimento</option>
-                  <option>Centralizar equipe</option>
-                  <option>Conhecer a plataforma completa</option>
+                  {s.fields.necessidadeOptions.map((opt) => (
+                    <option key={opt}>{opt}</option>
+                  ))}
                 </select>
               </label>
               <label style={fieldLabel}>
-                Melhor horário para contato
+                {s.fields.horario}
                 <select name="horario" style={fieldSelect}>
-                  <option>Manhã</option>
-                  <option>Tarde</option>
-                  <option>Noite</option>
+                  {s.fields.horarioOptions.map((opt) => (
+                    <option key={opt}>{opt}</option>
+                  ))}
                 </select>
               </label>
               <label style={{ ...fieldLabel, gridColumn: "1 / -1" }}>
-                Mensagem opcional
+                {s.fields.mensagem}
                 <textarea
                   name="mensagem"
                   rows={3}
-                  placeholder="Conte um pouco sobre sua operação (opcional)"
+                  placeholder={s.fields.mensagemPlaceholder}
                   style={{ ...fieldInput, resize: "vertical" }}
                 />
               </label>
@@ -166,7 +151,7 @@ export default function ScheduleForm() {
                   "grid-column:1 / -1;display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#009CBB;color:#FFFFFF;font-size:15.5px;font-weight:650;padding:16px 26px;border-radius:999px;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(0,156,187,0.3);transition:background 0.2s,transform 0.2s;font-family:'Geist',system-ui,sans-serif"
                 )}
               >
-                Agendar minha apresentação →
+                {s.submit}
               </button>
             </form>
           ) : (
@@ -179,10 +164,10 @@ export default function ScheduleForm() {
                 ✓
               </div>
               <h3 style={sx("margin:0;font-size:22px;font-weight:650;color:#06222D")}>
-                Recebemos sua solicitação
+                {s.successTitle}
               </h3>
               <p style={sx("margin:12px auto 0;font-size:15px;line-height:1.6;color:#46626C;max-width:380px")}>
-                Em breve nossa equipe entrará em contato para apresentar o XFlow XLENT.
+                {s.successText}
               </p>
             </div>
           )}

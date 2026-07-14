@@ -1,9 +1,12 @@
 import { sx } from "../utils/sx";
 import { useReveal } from "../hooks/useReveal";
 import Ribbon from "./Ribbon";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function FinalCTA() {
   const revealRef = useReveal();
+  const { t } = useLanguage();
+  const f = t.finalCTA;
 
   return (
     <section style={sx("position:relative;background:#002733;overflow:hidden")}>
@@ -21,7 +24,7 @@ export default function FinalCTA() {
             "display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,197,0,0.4);background:rgba(0,39,51,0.6);backdrop-filter:blur(6px);border-radius:999px;padding:8px 18px;font-family:'Geist Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.06em;color:#FFC500;margin-bottom:28px"
           )}
         >
-          XFLOW XLENT · R$ 39,90/MÊS
+          {f.badge}
         </div>
         <h2
           className="xf-h1-sm"
@@ -29,11 +32,10 @@ export default function FinalCTA() {
             "margin:0;font-size:48px;line-height:1.08;font-weight:650;letter-spacing:-0.035em;color:#FFFFFF;text-wrap:balance"
           )}
         >
-          Sua empresa pode ter um CRM completo ainda hoje
+          {f.title}
         </h2>
         <p style={sx("margin:22px auto 0;font-size:17px;line-height:1.65;color:#C9DBE1;max-width:560px;text-wrap:pretty")}>
-          Organize contatos, vendas, financeiro, tarefas, agenda, equipe e comunicação em uma única
-          plataforma.
+          {f.subtitle}
         </p>
         <div className="xf-final-ctas" style={sx("display:flex;align-items:center;justify-content:center;gap:14px;margin-top:40px")}>
           <a
@@ -43,7 +45,7 @@ export default function FinalCTA() {
               "white-space:nowrap;display:inline-flex;align-items:center;gap:9px;background:#FFC500;color:#003141;font-size:15.5px;font-weight:700;padding:15px 28px;border-radius:999px;text-decoration:none;box-shadow:0 8px 28px rgba(255,197,0,0.4);transition:transform 0.2s,background 0.2s"
             )}
           >
-            Assine agora →
+            {f.ctaSubscribe}
           </a>
           <a
             href="#agendar"
@@ -52,7 +54,7 @@ export default function FinalCTA() {
               "white-space:nowrap;display:inline-flex;align-items:center;gap:8px;color:#FFFFFF;font-size:15.5px;font-weight:600;padding:15px 26px;border-radius:999px;text-decoration:none;border:1px solid rgba(255,255,255,0.35);background:rgba(0,39,51,0.4);backdrop-filter:blur(6px);transition:border-color 0.2s,background 0.2s"
             )}
           >
-            Agendar apresentação
+            {f.ctaSchedule}
           </a>
         </div>
       </div>

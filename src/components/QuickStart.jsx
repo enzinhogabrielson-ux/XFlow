@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { sx } from "../utils/sx";
 import { useReveal } from "../hooks/useReveal";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const fieldStyle = sx(
   "border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:12px 14px;font-size:14px;color:#FFFFFF;background:rgba(255,255,255,0.07)"
@@ -12,6 +13,8 @@ const optionStyle = { color: "#06222D" };
 
 export default function QuickStart() {
   const revealRef = useReveal();
+  const { t } = useLanguage();
+  const q = t.quickStart;
   const [sent, setSent] = useState(false);
 
   function handleSubmit(e) {
@@ -51,49 +54,39 @@ export default function QuickStart() {
                   "margin:0;font-size:32px;line-height:1.15;font-weight:650;letter-spacing:-0.025em;color:#FFFFFF;text-wrap:balance"
                 )}
               >
-                Quer começar direto pelo plano de{" "}
-                <span style={sx("color:#FFC500;white-space:nowrap")}>R$ 39,90</span>?
+                {q.titlePrefix}{" "}
+                <span style={sx("color:#FFC500;white-space:nowrap")}>{q.price}</span> {q.titleSuffix}
               </h2>
               <p style={sx("margin:16px 0 0;font-size:15.5px;line-height:1.65;color:#B9CFD6;text-wrap:pretty")}>
-                Preencha seus dados para receber as instruções de contratação e ativação da sua
-                conta.
+                {q.subtitle}
               </p>
             </div>
             <div>
               {!sent ? (
                 <form onSubmit={handleSubmit} className="xf-form-grid" style={sx("display:grid;grid-template-columns:1fr 1fr;gap:12px")}>
-                  <input type="text" name="nome" required placeholder="Nome completo" style={fieldStyle} />
-                  <input type="email" name="email" required placeholder="E-mail" style={fieldStyle} />
-                  <input type="tel" name="whatsapp" required placeholder="WhatsApp" style={fieldStyle} />
-                  <input type="text" name="empresa" required placeholder="Empresa" style={fieldStyle} />
+                  <input type="text" name="nome" required placeholder={q.fields.nomePlaceholder} style={fieldStyle} />
+                  <input type="email" name="email" required placeholder={q.fields.emailPlaceholder} style={fieldStyle} />
+                  <input type="tel" name="whatsapp" required placeholder={q.fields.whatsappPlaceholder} style={fieldStyle} />
+                  <input type="text" name="empresa" required placeholder={q.fields.empresaPlaceholder} style={fieldStyle} />
                   <select name="acessos" style={selectStyle}>
-                    <option style={optionStyle}>Quantidade de acessos</option>
-                    <option style={optionStyle}>1 a 5</option>
-                    <option style={optionStyle}>6 a 15</option>
-                    <option style={optionStyle}>16 a 50</option>
-                    <option style={optionStyle}>Mais de 50</option>
+                    {q.fields.acessosOptions.map((opt) => (
+                      <option key={opt} style={optionStyle}>{opt}</option>
+                    ))}
                   </select>
                   <select name="pais" style={selectStyle}>
-                    <option style={optionStyle}>País</option>
-                    <option style={optionStyle}>Brasil</option>
-                    <option style={optionStyle}>Portugal</option>
-                    <option style={optionStyle}>Estados Unidos</option>
-                    <option style={optionStyle}>Espanha</option>
-                    <option style={optionStyle}>México</option>
-                    <option style={optionStyle}>Argentina</option>
-                    <option style={optionStyle}>Outro</option>
+                    {q.fields.paisOptions.map((opt) => (
+                      <option key={opt} style={optionStyle}>{opt}</option>
+                    ))}
                   </select>
                   <select name="idioma" style={selectStyle}>
-                    <option style={optionStyle}>Idioma</option>
-                    <option style={optionStyle}>Português</option>
-                    <option style={optionStyle}>Inglês</option>
-                    <option style={optionStyle}>Espanhol</option>
+                    {q.fields.idiomaOptions.map((opt) => (
+                      <option key={opt} style={optionStyle}>{opt}</option>
+                    ))}
                   </select>
                   <select name="pagamento" style={selectStyle}>
-                    <option style={optionStyle}>Forma de pagamento desejada</option>
-                    <option style={optionStyle}>Cartão de crédito</option>
-                    <option style={optionStyle}>Pix</option>
-                    <option style={optionStyle}>Boleto</option>
+                    {q.fields.pagamentoOptions.map((opt) => (
+                      <option key={opt} style={optionStyle}>{opt}</option>
+                    ))}
                   </select>
                   <button
                     type="submit"
@@ -102,7 +95,7 @@ export default function QuickStart() {
                       "grid-column:1 / -1;display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#FFC500;color:#003141;font-size:15.5px;font-weight:700;padding:15px 26px;border-radius:999px;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(255,197,0,0.3);transition:background 0.2s,transform 0.2s;font-family:'Geist',system-ui,sans-serif"
                     )}
                   >
-                    Quero ativar meu XFlow →
+                    {q.submit}
                   </button>
                 </form>
               ) : (
@@ -115,11 +108,10 @@ export default function QuickStart() {
                     ✓
                   </div>
                   <h3 style={sx("margin:0;font-size:20px;font-weight:650;color:#FFFFFF")}>
-                    Dados recebidos!
+                    {q.successTitle}
                   </h3>
                   <p style={sx("margin:10px auto 0;font-size:14.5px;line-height:1.6;color:#B9CFD6;max-width:360px")}>
-                    Você receberá as instruções de contratação e ativação da sua conta em
-                    instantes.
+                    {q.successText}
                   </p>
                 </div>
               )}

@@ -1,31 +1,11 @@
 import { sx } from "../utils/sx";
 import { useReveal } from "../hooks/useReveal";
-
-const STEPS = [
-  {
-    n: "01",
-    title: "Entendimento da sua operação",
-    text: "Nossa equipe entende como sua empresa trabalha hoje.",
-  },
-  {
-    n: "02",
-    title: "Apresentação da plataforma",
-    text: "Mostramos os módulos principais do XFlow e como eles se conectam.",
-  },
-  {
-    n: "03",
-    title: "Configuração ideal",
-    text: "Indicamos como organizar usuários, setores, tarefas, contatos e financeiro.",
-  },
-  {
-    n: "04",
-    title: "Ativação da conta",
-    text: "Você recebe o caminho para começar a usar a plataforma.",
-  },
-];
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function GuidedDemo() {
   const revealRef = useReveal();
+  const { t } = useLanguage();
+  const steps = t.guidedDemo.steps.map((step, i) => ({ ...step, n: String(i + 1).padStart(2, "0") }));
 
   return (
     <section style={sx("background:#F6F9FA")}>
@@ -36,7 +16,7 @@ export default function GuidedDemo() {
             "margin:0 auto;font-size:40px;line-height:1.12;font-weight:650;letter-spacing:-0.03em;color:#06222D;text-align:center;max-width:680px;text-wrap:balance"
           )}
         >
-          Na apresentação, você verá na prática como o XFlow funciona
+          {t.guidedDemo.title}
         </h2>
         <div style={sx("position:relative;margin-top:64px")}>
           <svg
@@ -60,7 +40,7 @@ export default function GuidedDemo() {
             />
           </div>
           <div className="xf-grid-4" style={sx("position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:20px")}>
-            {STEPS.map((step) => (
+            {steps.map((step) => (
               <div key={step.n} style={sx("display:flex;flex-direction:column;align-items:center;text-align:center")}>
                 <div
                   style={sx(

@@ -1,24 +1,12 @@
 import { sx } from "../utils/sx";
 import { useReveal } from "../hooks/useReveal";
 import xflowWhite from "../assets/xflow-white.png";
-
-const INCLUDES = [
-  "CRM completo",
-  "Acessos múltiplos",
-  "Comercial integrado",
-  "Financeiro integrado",
-  "Gestão de tarefas e projetos",
-  "Agenda e calendário",
-  "Comunicação externa",
-  "Automações",
-  "Administração de usuários",
-  "Sistema em português, inglês e espanhol",
-  "Acesso para empresas em diversos países",
-  "Suporte de implantação inicial",
-];
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Pricing() {
   const revealRef = useReveal();
+  const { t } = useLanguage();
+  const p = t.pricing;
 
   return (
     <section id="preco" style={sx("background:#FFFFFF")}>
@@ -30,15 +18,14 @@ export default function Pricing() {
               "margin:0;font-size:40px;line-height:1.12;font-weight:650;letter-spacing:-0.03em;color:#06222D;text-wrap:balance"
             )}
           >
-            Tudo isso por apenas <span style={sx("white-space:nowrap")}>R$ 39,90</span> por mês
+            {p.titlePrefix} <span style={sx("white-space:nowrap")}>{p.price}</span> {p.titleSuffix}
           </h2>
           <p
             style={sx(
               "margin:18px 0 0;font-size:16.5px;line-height:1.65;color:#46626C;text-wrap:pretty"
             )}
           >
-            Um CRM completo, com acessos múltiplos e preparado para empresas que querem crescer com
-            controle.
+            {p.subtitle}
           </p>
         </div>
         <div
@@ -67,7 +54,7 @@ export default function Pricing() {
                 "position:relative;margin-top:28px;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#7FD4E4"
               )}
             >
-              XFLOW XLENT
+              {p.planLabel}
             </div>
             <div
               style={sx(
@@ -79,9 +66,9 @@ export default function Pricing() {
                   "font-size:52px;font-weight:700;letter-spacing:-0.03em;color:#FFFFFF;white-space:nowrap"
                 )}
               >
-                R$ 39,90
+                {p.price}
               </span>
-              <span style={sx("font-size:15px;color:#7E9BA5")}>/mês</span>
+              <span style={sx("font-size:15px;color:#7E9BA5")}>{p.perMonth}</span>
             </div>
             <a
               href="#ativar"
@@ -90,7 +77,7 @@ export default function Pricing() {
                 "position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#FFC500;color:#003141;font-size:15px;font-weight:700;padding:14px 24px;border-radius:999px;text-decoration:none;margin-top:30px;box-shadow:0 8px 24px rgba(255,197,0,0.3);transition:transform 0.2s,background 0.2s"
               )}
             >
-              <span style={sx("white-space:nowrap")}>Assine agora →</span>
+              <span style={sx("white-space:nowrap")}>{p.ctaSubscribe}</span>
             </a>
             <a
               href="#agendar"
@@ -99,12 +86,12 @@ export default function Pricing() {
                 "position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;border:1px solid rgba(255,255,255,0.3);color:#FFFFFF;font-size:15px;font-weight:600;padding:13px 24px;border-radius:999px;text-decoration:none;margin-top:12px;transition:background 0.2s,border-color 0.2s"
               )}
             >
-              <span style={sx("white-space:nowrap")}>Agendar apresentação</span>
+              <span style={sx("white-space:nowrap")}>{p.ctaSchedule}</span>
             </a>
             <div
               style={sx("position:relative;margin-top:14px;font-size:12.5px;color:#7E9BA5;text-align:center")}
             >
-              Conheça a plataforma antes de contratar.
+              {p.note}
             </div>
           </div>
           <div style={sx("background:#FFFFFF;padding:40px 38px")}>
@@ -113,10 +100,10 @@ export default function Pricing() {
                 "font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#6B8089;margin-bottom:20px"
               )}
             >
-              INCLUI
+              {p.includesLabel}
             </div>
             <div className="xf-includes-grid" style={sx("display:grid;grid-template-columns:1fr 1fr;gap:13px 28px")}>
-              {INCLUDES.map((label) => (
+              {p.includes.map((label) => (
                 <span
                   key={label}
                   style={sx("display:flex;align-items:center;gap:10px;font-size:14.5px;color:#06222D")}

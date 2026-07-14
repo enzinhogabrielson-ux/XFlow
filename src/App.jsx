@@ -1,3 +1,4 @@
+import { LanguageProvider } from "./i18n/LanguageContext";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import PlatformShowcase from "./components/PlatformShowcase";
@@ -18,24 +19,26 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div style={{ overflowX: "hidden", background: "#F6F9FA" }}>
-      <Header />
-      <Hero />
-      <PlatformShowcase />
-      <PainPoints />
-      <Features />
-      <Pricing />
-      <Differentials />
-      <ForWhom />
-      <International />
-      <GuidedDemo />
-      <ScheduleForm />
-      <QuickStart />
-      <Comparison />
-      <Trust />
-      <FAQ />
-      <FinalCTA />
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div style={{ overflowX: "hidden", background: "#F6F9FA" }}>
+        <Header />
+        <Hero />
+        <PlatformShowcase />
+        <PainPoints />
+        <Features />
+        <Pricing />
+        <Differentials />
+        <ForWhom />
+        <International />
+        <GuidedDemo />
+        <ScheduleForm />
+        <QuickStart />
+        <Comparison />
+        <Trust />
+        <FAQ />
+        <FinalCTA />
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }

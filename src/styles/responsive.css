@@ -56,9 +56,6 @@
   .xf-nav {
     display: none !important;
   }
-  .xf-header-login {
-    display: none !important;
-  }
 
   .xf-sticky-col {
     position: static !important;
@@ -123,6 +120,12 @@
   .xf-header-inner {
     padding: 10px 16px !important;
     height: auto !important;
+    flex-wrap: wrap !important;
+    row-gap: 8px !important;
+  }
+  .xf-header-actions {
+    width: 100%;
+    justify-content: center !important;
     flex-wrap: wrap !important;
     row-gap: 8px !important;
   }

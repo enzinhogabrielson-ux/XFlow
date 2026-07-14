@@ -1,8 +1,12 @@
 import { sx } from "../utils/sx";
 import Ribbon from "./Ribbon";
 import xflowWhite from "../assets/xflow-white.png";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Hero() {
+  const { t } = useLanguage();
+  const h = t.hero;
+
   return (
     <section id="hero" style={sx("position:relative;background:#002733")}>
       <div style={sx("position:absolute;inset:0;overflow:hidden;pointer-events:none")}>
@@ -35,7 +39,7 @@ export default function Hero() {
                 "width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,#FFC500,#009CBB)"
               )}
             />
-            XFLOW XLENT · CRM E AUTOMAÇÃO COMERCIAL
+            {h.badge}
           </div>
           <h1
             className="xf-h1"
@@ -43,13 +47,13 @@ export default function Hero() {
               "margin:0;font-size:58px;line-height:1.06;font-weight:650;letter-spacing:-0.035em;color:#FFFFFF;max-width:560px;text-wrap:balance"
             )}
           >
-            O CRM completo da XLENT por apenas{" "}
+            {h.titlePrefix}{" "}
             <span
               style={sx(
                 "background:linear-gradient(95deg,#2FC6E4,#FFC500);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;white-space:nowrap"
               )}
             >
-              R$ 39,90
+              {h.price}
             </span>
           </h1>
           <p
@@ -57,18 +61,14 @@ export default function Hero() {
               "margin:22px 0 0;font-size:18px;line-height:1.6;color:#B9CFD6;max-width:500px;text-wrap:pretty"
             )}
           >
-            Organize vendas, contatos, tarefas, agenda, financeiro, atendimento e gestão da sua
-            empresa em uma única plataforma simples, completa e acessível.
+            {h.paragraph1}
           </p>
           <p
             style={sx(
               "margin:14px 0 0;font-size:14.5px;line-height:1.65;color:#7E9BA5;max-width:500px;text-wrap:pretty"
             )}
           >
-            O XFlow XLENT foi criado para empresas que precisam de controle, velocidade e
-            organização, sem pagar caro por ferramentas separadas. Com múltiplos acessos, idioma
-            em português, inglês e espanhol, e estrutura preparada para atender negócios em
-            diversos países.
+            {h.paragraph2}
           </p>
           <div className="xf-hero-ctas" style={sx("display:flex;align-items:center;gap:14px;margin-top:34px")}>
             <a
@@ -78,7 +78,7 @@ export default function Hero() {
                 "white-space:nowrap;display:inline-flex;align-items:center;gap:9px;background:#FFC500;color:#003141;font-size:15px;font-weight:700;padding:14px 26px;border-radius:999px;text-decoration:none;box-shadow:0 8px 24px rgba(255,197,0,0.4);transition:transform 0.2s,background 0.2s"
               )}
             >
-              Assine agora — R$ 39,90/mês <span style={sx("line-height:1")}>→</span>
+              {h.ctaSubscribe} <span style={sx("line-height:1")}>→</span>
             </a>
             <a
               href="#agendar"
@@ -87,7 +87,7 @@ export default function Hero() {
                 "white-space:nowrap;display:inline-flex;align-items:center;gap:8px;color:#FFFFFF;font-size:15px;font-weight:600;padding:14px 22px;border-radius:999px;text-decoration:none;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.05);transition:border-color 0.2s,background 0.2s"
               )}
             >
-              Agendar apresentação
+              {h.ctaSchedule}
             </a>
           </div>
           <div
@@ -95,12 +95,7 @@ export default function Hero() {
               "display:flex;flex-wrap:wrap;gap:9px;margin-top:32px;max-width:520px"
             )}
           >
-            {[
-              "CRM completo",
-              "Acessos múltiplos",
-              "PT · EN · ES",
-              "Comercial, financeiro e gestão em um só lugar",
-            ].map((label) => (
+            {h.badges.map((label) => (
               <span
                 key={label}
                 style={sx(
@@ -115,7 +110,7 @@ export default function Hero() {
                 "display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(255,197,0,0.4);background:rgba(255,197,0,0.08);border-radius:999px;padding:6px 13px;font-family:'Geist Mono',monospace;font-size:11px;color:#FFC500;font-weight:600"
               )}
             >
-              Apenas R$ 39,90/mês
+              {h.badgePrice}
             </span>
           </div>
         </div>
@@ -140,7 +135,7 @@ export default function Hero() {
                     "margin-left:10px;flex:1;background:#FFFFFF;border:1px solid rgba(0,49,65,0.08);border-radius:6px;padding:3px 10px;font-family:'Geist Mono',monospace;font-size:9px;color:#6B8089"
                   )}
                 >
-                  crm.xlentbrasil.com
+                  {h.mock.urlBar}
                 </span>
               </div>
               <div style={sx("display:grid;grid-template-columns:138px 1fr")}>
@@ -160,17 +155,17 @@ export default function Hero() {
                         "font-family:'Geist Mono',monospace;font-size:7.5px;letter-spacing:0.08em;color:#5E8794;padding:2px 6px"
                       )}
                     >
-                      COMERCIAL
+                      {h.mock.sidebar.comercial}
                     </span>
                     <span
                       style={sx(
                         "font-size:9.5px;color:#FFFFFF;background:rgba(0,156,187,0.35);border-radius:5px;padding:4px 8px;font-weight:500"
                       )}
                     >
-                      Pipeline
+                      {h.mock.sidebar.pipeline}
                     </span>
-                    <span style={sx("font-size:9.5px;color:#A9C4CC;padding:3px 8px")}>Contatos</span>
-                    <span style={sx("font-size:9.5px;color:#A9C4CC;padding:3px 8px")}>Agenda</span>
+                    <span style={sx("font-size:9.5px;color:#A9C4CC;padding:3px 8px")}>{h.mock.sidebar.contatos}</span>
+                    <span style={sx("font-size:9.5px;color:#A9C4CC;padding:3px 8px")}>{h.mock.sidebar.agenda}</span>
                   </div>
                   <div style={sx("display:flex;flex-direction:column;gap:3px")}>
                     <span
@@ -178,13 +173,13 @@ export default function Hero() {
                         "font-family:'Geist Mono',monospace;font-size:7.5px;letter-spacing:0.08em;color:#5E8794;padding:2px 6px"
                       )}
                     >
-                      FINANCEIRO
+                      {h.mock.sidebar.financeiro}
                     </span>
                     <span style={sx("font-size:9.5px;color:#A9C4CC;padding:3px 8px")}>
-                      Contas a Pagar
+                      {h.mock.sidebar.contasPagar}
                     </span>
                     <span style={sx("font-size:9.5px;color:#A9C4CC;padding:3px 8px")}>
-                      Fluxo de Caixa
+                      {h.mock.sidebar.fluxoCaixa}
                     </span>
                   </div>
                   <div style={sx("display:flex;flex-direction:column;gap:3px")}>
@@ -193,10 +188,10 @@ export default function Hero() {
                         "font-family:'Geist Mono',monospace;font-size:7.5px;letter-spacing:0.08em;color:#5E8794;padding:2px 6px"
                       )}
                     >
-                      GESTÃO
+                      {h.mock.sidebar.gestao}
                     </span>
-                    <span style={sx("font-size:9.5px;color:#A9C4CC;padding:3px 8px")}>Tarefas</span>
-                    <span style={sx("font-size:9.5px;color:#A9C4CC;padding:3px 8px")}>Projetos</span>
+                    <span style={sx("font-size:9.5px;color:#A9C4CC;padding:3px 8px")}>{h.mock.sidebar.tarefas}</span>
+                    <span style={sx("font-size:9.5px;color:#A9C4CC;padding:3px 8px")}>{h.mock.sidebar.projetos}</span>
                   </div>
                   <div style={sx("display:flex;flex-direction:column;gap:3px")}>
                     <span
@@ -204,9 +199,9 @@ export default function Hero() {
                         "font-family:'Geist Mono',monospace;font-size:7.5px;letter-spacing:0.08em;color:#5E8794;padding:2px 6px"
                       )}
                     >
-                      COMUNICAÇÃO
+                      {h.mock.sidebar.comunicacao}
                     </span>
-                    <span style={sx("font-size:9.5px;color:#A9C4CC;padding:3px 8px")}>Conversas</span>
+                    <span style={sx("font-size:9.5px;color:#A9C4CC;padding:3px 8px")}>{h.mock.sidebar.conversas}</span>
                   </div>
                 </div>
                 <div style={sx("background:#F8FAFB;padding:14px")}>
@@ -216,7 +211,7 @@ export default function Hero() {
                     )}
                   >
                     <span style={sx("font-size:12px;font-weight:600;color:#06222D")}>
-                      Visão geral
+                      {h.mock.overview}
                     </span>
                     <span style={sx("display:flex;align-items:center;gap:6px")}>
                       <span
@@ -224,7 +219,7 @@ export default function Hero() {
                           "font-family:'Geist Mono',monospace;font-size:8.5px;color:#009CBB;border:1px solid rgba(0,156,187,0.3);border-radius:999px;padding:2px 8px"
                         )}
                       >
-                        PT · EN · ES
+                        {h.mock.langBadge}
                       </span>
                       <span
                         style={sx(
@@ -238,136 +233,53 @@ export default function Hero() {
                       "display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px"
                     )}
                   >
-                    <div
-                      style={sx(
-                        "background:#FFFFFF;border:1px solid rgba(0,49,65,0.08);border-radius:9px;padding:9px 10px"
-                      )}
-                    >
+                    {h.mock.stats.map((stat) => (
                       <div
+                        key={stat.label}
                         style={sx(
-                          "font-family:'Geist Mono',monospace;font-size:7.5px;letter-spacing:0.06em;color:#6B8089"
+                          "background:#FFFFFF;border:1px solid rgba(0,49,65,0.08);border-radius:9px;padding:9px 10px"
                         )}
                       >
-                        NOVOS LEADS
+                        <div
+                          style={sx(
+                            "font-family:'Geist Mono',monospace;font-size:7.5px;letter-spacing:0.06em;color:#6B8089"
+                          )}
+                        >
+                          {stat.label}
+                        </div>
+                        <div style={sx("font-size:16px;font-weight:650;color:#06222D;margin-top:3px")}>
+                          {stat.value}
+                        </div>
+                        <div style={sx("font-size:8.5px;color:#1E9E6A;margin-top:2px")}>
+                          {stat.growth}
+                        </div>
                       </div>
-                      <div style={sx("font-size:16px;font-weight:650;color:#06222D;margin-top:3px")}>
-                        128
-                      </div>
-                      <div style={sx("font-size:8.5px;color:#1E9E6A;margin-top:2px")}>
-                        ▲ 12% na semana
-                      </div>
-                    </div>
-                    <div
-                      style={sx(
-                        "background:#FFFFFF;border:1px solid rgba(0,49,65,0.08);border-radius:9px;padding:9px 10px"
-                      )}
-                    >
-                      <div
-                        style={sx(
-                          "font-family:'Geist Mono',monospace;font-size:7.5px;letter-spacing:0.06em;color:#6B8089"
-                        )}
-                      >
-                        RECEITA DO MÊS
-                      </div>
-                      <div style={sx("font-size:16px;font-weight:650;color:#06222D;margin-top:3px")}>
-                        R$ 84.210
-                      </div>
-                      <div style={sx("font-size:8.5px;color:#1E9E6A;margin-top:2px")}>
-                        ▲ 8% vs. anterior
-                      </div>
-                    </div>
-                    <div
-                      style={sx(
-                        "background:#FFFFFF;border:1px solid rgba(0,49,65,0.08);border-radius:9px;padding:9px 10px"
-                      )}
-                    >
-                      <div
-                        style={sx(
-                          "font-family:'Geist Mono',monospace;font-size:7.5px;letter-spacing:0.06em;color:#6B8089"
-                        )}
-                      >
-                        TAREFAS HOJE
-                      </div>
-                      <div style={sx("font-size:16px;font-weight:650;color:#06222D;margin-top:3px")}>
-                        23
-                      </div>
-                      <div style={sx("font-size:8.5px;color:#6B8089;margin-top:2px")}>
-                        9 concluídas
-                      </div>
-                    </div>
+                    ))}
                   </div>
                   <div style={sx("display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px")}>
-                    <div
-                      style={sx(
-                        "background:#FFFFFF;border:1px solid rgba(0,49,65,0.08);border-radius:9px;padding:8px"
-                      )}
-                    >
-                      <div style={sx("font-size:8.5px;font-weight:600;color:#46626C;margin-bottom:6px")}>
-                        Novo lead · 12
-                      </div>
+                    {h.mock.columns.map((col) => (
                       <div
+                        key={col.title}
                         style={sx(
-                          "background:#F1F6F7;border-radius:6px;padding:6px;margin-bottom:5px"
+                          "background:#FFFFFF;border:1px solid rgba(0,49,65,0.08);border-radius:9px;padding:8px"
                         )}
                       >
-                        <div style={sx("font-size:8px;font-weight:600;color:#06222D")}>
-                          Agência Prisma
+                        <div style={sx("font-size:8.5px;font-weight:600;color:#46626C;margin-bottom:6px")}>
+                          {col.title}
                         </div>
-                        <div style={sx("font-size:7.5px;color:#6B8089")}>R$ 2.400/mês</div>
+                        {col.rows.map((row, i) => (
+                          <div
+                            key={row.name}
+                            style={sx(
+                              `background:#F1F6F7;border-radius:6px;padding:6px;${i === 0 ? "margin-bottom:5px" : ""}`
+                            )}
+                          >
+                            <div style={sx("font-size:8px;font-weight:600;color:#06222D")}>{row.name}</div>
+                            <div style={sx("font-size:7.5px;color:#6B8089")}>{row.value}</div>
+                          </div>
+                        ))}
                       </div>
-                      <div style={sx("background:#F1F6F7;border-radius:6px;padding:6px")}>
-                        <div style={sx("font-size:8px;font-weight:600;color:#06222D")}>
-                          Studio Aline
-                        </div>
-                        <div style={sx("font-size:7.5px;color:#6B8089")}>R$ 890/mês</div>
-                      </div>
-                    </div>
-                    <div
-                      style={sx(
-                        "background:#FFFFFF;border:1px solid rgba(0,49,65,0.08);border-radius:9px;padding:8px"
-                      )}
-                    >
-                      <div style={sx("font-size:8.5px;font-weight:600;color:#46626C;margin-bottom:6px")}>
-                        Proposta · 7
-                      </div>
-                      <div
-                        style={sx(
-                          "background:#FFF6DC;border-radius:6px;padding:6px;margin-bottom:5px"
-                        )}
-                      >
-                        <div style={sx("font-size:8px;font-weight:600;color:#06222D")}>Log Mais</div>
-                        <div style={sx("font-size:7.5px;color:#6B8089")}>R$ 5.100/mês</div>
-                      </div>
-                      <div style={sx("background:#F1F6F7;border-radius:6px;padding:6px")}>
-                        <div style={sx("font-size:8px;font-weight:600;color:#06222D")}>
-                          Clínica Vitta
-                        </div>
-                        <div style={sx("font-size:7.5px;color:#6B8089")}>R$ 1.750/mês</div>
-                      </div>
-                    </div>
-                    <div
-                      style={sx(
-                        "background:#FFFFFF;border:1px solid rgba(0,49,65,0.08);border-radius:9px;padding:8px"
-                      )}
-                    >
-                      <div style={sx("font-size:8.5px;font-weight:600;color:#46626C;margin-bottom:6px")}>
-                        Fechado · 4
-                      </div>
-                      <div
-                        style={sx(
-                          "background:#E2F4F0;border-radius:6px;padding:6px;margin-bottom:5px"
-                        )}
-                      >
-                        <div style={sx("font-size:8px;font-weight:600;color:#06222D")}>
-                          Grupo Andar
-                        </div>
-                        <div style={sx("font-size:7.5px;color:#1E9E6A")}>✓ Ganho</div>
-                      </div>
-                      <div style={sx("background:#E2F4F0;border-radius:6px;padding:6px")}>
-                        <div style={sx("font-size:8px;font-weight:600;color:#06222D")}>TecServ</div>
-                        <div style={sx("font-size:7.5px;color:#1E9E6A")}>✓ Ganho</div>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -383,7 +295,7 @@ export default function Hero() {
                   "width:6px;height:6px;border-radius:50%;background:#FFC500;animation:xf-blink 1.6s ease infinite"
                 )}
               />
-              + R$ 12.480 recebidos
+              {h.mock.chip1}
             </div>
             <div
               className="xf-hero-chip"
@@ -396,7 +308,7 @@ export default function Hero() {
                   "width:6px;height:6px;border-radius:50%;background:#009CBB;animation:xf-blink 2.1s ease infinite"
                 )}
               />
-              Tarefa concluída · Onboarding
+              {h.mock.chip2}
             </div>
           </div>
         </div>

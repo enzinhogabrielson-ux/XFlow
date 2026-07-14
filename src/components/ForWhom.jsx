@@ -1,21 +1,10 @@
 import { sx } from "../utils/sx";
 import { useReveal } from "../hooks/useReveal";
-
-const TAGS = [
-  "Empresas de serviços",
-  "Agências",
-  "Infoprodutores",
-  "Consultorias",
-  "Times comerciais",
-  "Prestadores de serviço",
-  "Escritórios administrativos",
-  "Pequenas e médias empresas",
-  "Operações com equipe remota",
-  "Empresas que atendem em mais de um idioma",
-];
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function ForWhom() {
   const revealRef = useReveal();
+  const { t } = useLanguage();
 
   return (
     <section id="para-quem" style={sx("background:#FFFFFF")}>
@@ -30,14 +19,14 @@ export default function ForWhom() {
             "margin:0 auto;font-size:40px;line-height:1.12;font-weight:650;letter-spacing:-0.03em;color:#06222D;max-width:720px;text-wrap:balance"
           )}
         >
-          O XFlow foi feito para empresas que precisam de organização sem complicação
+          {t.forWhom.title}
         </h2>
         <div
           style={sx(
             "display:flex;flex-wrap:wrap;justify-content:center;gap:11px;margin:44px auto 0;max-width:860px"
           )}
         >
-          {TAGS.map((tag) => (
+          {t.forWhom.tags.map((tag) => (
             <span
               key={tag}
               style={sx(
@@ -52,7 +41,7 @@ export default function ForWhom() {
               "border:1px solid rgba(255,197,0,0.5);background:rgba(255,197,0,0.1);border-radius:999px;padding:10px 20px;font-size:14.5px;font-weight:600;color:#8A6D00"
             )}
           >
-            Negócios que querem sair das planilhas
+            {t.forWhom.highlightTag}
           </span>
         </div>
         <a
@@ -63,7 +52,7 @@ export default function ForWhom() {
           )}
         >
           <span className="xf-long-cta-label" style={sx("white-space:nowrap")}>
-            Quero ver como funciona para minha empresa →
+            {t.forWhom.cta}
           </span>
         </a>
       </div>
