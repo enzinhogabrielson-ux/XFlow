@@ -1,0 +1,130 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: #f6f9fa;
+  font-family: "Geist", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #06222d;
+  overflow-x: hidden;
+}
+* {
+  box-sizing: border-box;
+}
+::selection {
+  background: rgba(0, 156, 187, 0.3);
+}
+a {
+  color: #009cbb;
+}
+a:hover {
+  color: #007d96;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+summary::marker {
+  content: "";
+}
+input,
+select,
+textarea {
+  font-family: "Geist", system-ui, sans-serif;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #009cbb !important;
+  box-shadow: 0 0 0 3px rgba(0, 156, 187, 0.15);
+}
+
+@keyframes xf-travel {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+@keyframes xf-fadeup {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes xf-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  70% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+@keyframes xf-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+@keyframes xf-float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-14px, 16px);
+  }
+}
+
+/* Hover states — ported from the design source's style-hover authoring attribute,
+   which the design tool only applies in its live canvas, not in static exports. */
+.hv-white:hover {
+  color: #ffffff !important;
+}
+.hv-yellow-btn:hover {
+  background: #ffd23f !important;
+  transform: translateY(-1px);
+}
+.hv-cyan-btn:hover {
+  background: #00accf !important;
+  transform: translateY(-1px);
+}
+.hv-outline-a:hover {
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  background: rgba(255, 255, 255, 0.09) !important;
+}
+.hv-outline-b:hover {
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+.hv-outline-c:hover {
+  border-color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+.hv-outline-d:hover {
+  background: rgba(255, 255, 255, 0.09) !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
+}

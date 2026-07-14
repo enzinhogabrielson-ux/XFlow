@@ -1,0 +1,145 @@
+/* Responsive layer — desktop (>960px) is untouched (matches the original
+   fixed-width design 1:1). These breakpoints adapt the same markup for
+   tablet and mobile: stack grids, scale type/spacing, hide pure decoration. */
+
+@media (max-width: 960px) {
+  .xf-section-pad {
+    padding-left: 28px !important;
+    padding-right: 28px !important;
+  }
+  .xf-section-pad-hero {
+    padding: 64px 28px 80px !important;
+  }
+  .xf-section-pad-lg {
+    padding: 80px 28px !important;
+  }
+
+  .xf-2col-grid,
+  .xf-2col-grid-alt,
+  .xf-pricing-grid,
+  .xf-footer-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .xf-grid-5 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .xf-grid-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .xf-grid-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .xf-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .xf-hero-mock {
+    justify-self: stretch !important;
+    width: 100% !important;
+    max-width: 480px;
+  }
+
+  .xf-h1 {
+    font-size: 42px !important;
+  }
+  .xf-h1-sm {
+    font-size: 36px !important;
+  }
+  .xf-h2 {
+    font-size: 32px !important;
+  }
+  .xf-h2-sm {
+    font-size: 28px !important;
+  }
+
+  .xf-nav {
+    display: none !important;
+  }
+  .xf-header-login {
+    display: none !important;
+  }
+
+  .xf-sticky-col {
+    position: static !important;
+    top: auto !important;
+  }
+
+  .xf-decor {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .xf-section-pad {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .xf-section-pad-hero {
+    padding: 48px 20px 56px !important;
+  }
+  .xf-section-pad-lg {
+    padding: 64px 20px !important;
+  }
+
+  .xf-grid-5,
+  .xf-grid-4,
+  .xf-grid-3,
+  .xf-grid-2,
+  .xf-form-grid,
+  .xf-includes-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .xf-h1 {
+    font-size: 32px !important;
+  }
+  .xf-h1-sm {
+    font-size: 28px !important;
+  }
+  .xf-h2 {
+    font-size: 26px !important;
+  }
+  .xf-h2-sm {
+    font-size: 22px !important;
+  }
+
+  .xf-hero-ctas,
+  .xf-final-ctas,
+  .xf-footer-bottom {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px;
+  }
+  .xf-hero-ctas a,
+  .xf-final-ctas a {
+    justify-content: center !important;
+  }
+
+  .xf-hero-chip {
+    display: none !important;
+  }
+
+  .xf-header-inner {
+    padding: 10px 16px !important;
+    height: auto !important;
+    flex-wrap: wrap !important;
+    row-gap: 8px !important;
+  }
+  .xf-quickstart-box {
+    padding: 32px 22px !important;
+  }
+
+  .xf-tabs-scroll {
+    overflow-x: auto !important;
+  }
+
+  .xf-long-cta {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .xf-long-cta-label {
+    white-space: normal !important;
+  }
+}
