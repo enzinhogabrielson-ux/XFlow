@@ -10,7 +10,7 @@ export default function Trust() {
   return (
     <section style={sx("background:#FFFFFF")}>
       <div ref={revealRef} className="xf-section-pad" style={sx("max-width:760px;margin:0 auto;padding:104px 40px;text-align:center")}>
-        <img src={xflowIcon} alt="XFlow" style={sx("height:44px;width:auto;margin-bottom:26px")} />
+        <img src={xflowIcon} alt="XFlow" style={sx("height:44px;width:auto;margin-bottom:26px")} width="44" height="44" loading="lazy" />
         <h2
           className="xf-h2-sm"
           style={sx(

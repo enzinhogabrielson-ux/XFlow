@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="xf-section-pad" style={sx("max-width:1200px;margin:0 auto;padding:64px 40px 40px")}>
         <div className="xf-footer-grid" style={sx("display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px")}>
           <div>
-            <img src={xflowWhite} alt="XFlow XLENT" style={sx("height:38px;width:auto")} />
+            <img src={xflowWhite} alt="XFlow XLENT" style={sx("height:38px;width:auto")} width="135" height="38" loading="lazy" />
             <p style={sx("margin:18px 0 0;font-size:13.5px;line-height:1.6;color:#7E9BA5;max-width:280px")}>
               {f.tagline}
             </p>

@@ -130,3 +130,9 @@ textarea:focus {
   background: rgba(255, 255, 255, 0.09) !important;
   border-color: rgba(255, 255, 255, 0.55) !important;
 }
+
+/* FAQ Accordion rotation animation on details open */
+details[open] summary span {
+  transform: rotate(45deg);
+  color: #FFC500 !important;
+}

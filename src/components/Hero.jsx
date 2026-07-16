@@ -90,6 +90,20 @@ export default function Hero() {
               {h.ctaSchedule}
             </a>
           </div>
+          <div style={sx("margin-top:16px;margin-left:4px")}>
+            <a
+              href="https://crm.xlentbrasil.com/wl-signup"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={sx(
+                "color:#FFC500;font-size:13.5px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:opacity 0.2s"
+              )}
+              className="hv-white"
+            >
+              <span style={sx("display:inline-block;width:6px;height:6px;border-radius:50%;background:#FFC500;animation:xf-blink 1.5s infinite")} />
+              {h.freeTrialLink}
+            </a>
+          </div>
           <div
             style={sx(
               "display:flex;flex-wrap:wrap;gap:9px;margin-top:32px;max-width:520px"
@@ -148,6 +162,9 @@ export default function Hero() {
                     src={xflowWhite}
                     alt="XFlow"
                     style={sx("height:16px;width:auto;align-self:flex-start;margin:2px 0 4px 4px")}
+                    width="57"
+                    height="16"
+                    loading="lazy"
                   />
                   <div style={sx("display:flex;flex-direction:column;gap:3px")}>
                     <span

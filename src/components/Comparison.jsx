@@ -48,7 +48,7 @@ export default function Comparison() {
               <span style={sx("font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:0.08em;color:#7FD4E4")}>
                 {c.withLabel}
               </span>
-              <img src={xflowIcon} alt="" style={sx("height:22px;width:auto")} />
+              <img src={xflowIcon} alt="" style={sx("height:22px;width:auto")} width="22" height="22" loading="lazy" />
             </div>
             <div style={sx("display:flex;flex-direction:column;gap:15px")}>
               {c.withItems.map((label) => (

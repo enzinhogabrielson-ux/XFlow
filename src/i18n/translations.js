@@ -1,4 +1,10 @@
 const pt = {
+  promoBanner: {
+    badge: "NOVO",
+    text: "TESTE GRÁTIS POR 7 DIAS",
+    cta: "Experimentar Agora",
+    link: "https://crm.xlentbrasil.com/wl-signup"
+  },
   header: {
     logoAlt: "XFlow — CRM e Automação Comercial",
     nav: { features: "Funcionalidades", forWhom: "Para quem é", pricing: "Preço" },
@@ -15,6 +21,7 @@ const pt = {
       "O XFlow XLENT foi criado para empresas que precisam de controle, velocidade e organização, sem pagar caro por ferramentas separadas. Com múltiplos acessos, idioma em português, inglês e espanhol, e estrutura preparada para atender negócios em diversos países.",
     ctaSubscribe: "Assine agora — R$ 39,90/mês",
     ctaSchedule: "Agendar apresentação",
+    freeTrialLink: "Ou comece seu teste grátis por 7 dias agora →",
     badges: [
       "CRM completo",
       "Acessos múltiplos",
@@ -146,6 +153,7 @@ const pt = {
     ctaSubscribe: "Assine agora →",
     ctaSchedule: "Agendar apresentação",
     note: "Conheça a plataforma antes de contratar.",
+    freeTrialBadge: "7 DIAS GRÁTIS",
     includesLabel: "INCLUI",
     includes: [
       "CRM completo",
@@ -342,6 +350,12 @@ const pt = {
 };
 
 const en = {
+  promoBanner: {
+    badge: "NEW",
+    text: "FREE 7-DAY TRIAL",
+    cta: "Try It Now",
+    link: "https://crm.xlentbrasil.com/wl-signup"
+  },
   header: {
     logoAlt: "XFlow — CRM & Sales Automation",
     nav: { features: "Features", forWhom: "Who it's for", pricing: "Pricing" },
@@ -358,6 +372,7 @@ const en = {
       "XFlow XLENT was built for companies that need control, speed, and organization without paying a premium for separate tools. With multiple logins, available in Portuguese, English, and Spanish, and built to serve businesses across different countries.",
     ctaSubscribe: "Subscribe now — R$39.90/mo",
     ctaSchedule: "Book a demo",
+    freeTrialLink: "Or start your 7-day free trial right now →",
     badges: [
       "Complete CRM",
       "Multiple logins",
@@ -488,6 +503,7 @@ const en = {
     ctaSubscribe: "Subscribe now →",
     ctaSchedule: "Book a demo",
     note: "Get to know the platform before you commit.",
+    freeTrialBadge: "7-DAY FREE TRIAL",
     includesLabel: "INCLUDES",
     includes: [
       "Complete CRM",
@@ -684,10 +700,16 @@ const en = {
 };
 
 const es = {
+  promoBanner: {
+    badge: "NUEVO",
+    text: "PRUEBA GRATIS POR 7 DÍAS",
+    cta: "Probar Gratis",
+    link: "https://crm.xlentbrasil.com/wl-signup"
+  },
   header: {
     logoAlt: "XFlow — CRM y Automatización Comercial",
     nav: { features: "Funcionalidades", forWhom: "Para quién es", pricing: "Precio" },
-    schedule: "Agendar presentación",
+    schedule: "Agendar apresentação",
     subscribe: "Suscríbete ahora",
   },
   hero: {
@@ -700,6 +722,7 @@ const es = {
       "XFlow XLENT fue creado para empresas que necesitan control, velocidad y organización, sin pagar caro por herramientas separadas. Con múltiples accesos, disponible en portugués, inglés y español, y preparado para atender negocios en diversos países.",
     ctaSubscribe: "Suscríbete ahora — R$ 39,90/mes",
     ctaSchedule: "Agendar presentación",
+    freeTrialLink: "O inicie su prueba gratuita de 7 días ahora mismo →",
     badges: [
       "CRM completo",
       "Accesos múltiples",
@@ -830,6 +853,7 @@ const es = {
     ctaSubscribe: "Suscríbete ahora →",
     ctaSchedule: "Agendar presentación",
     note: "Conoce la plataforma antes de contratar.",
+    freeTrialBadge: "7 DÍAS GRATIS",
     includesLabel: "INCLUYE",
     includes: [
       "CRM completo",

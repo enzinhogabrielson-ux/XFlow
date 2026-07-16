@@ -28,7 +28,7 @@ export default function FAQ() {
                   "cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 0;font-size:15.5px;font-weight:600;color:#06222D"
                 )}
               >
-                {q} <span style={sx("color:#009CBB;font-size:18px;flex:none")}>+</span>
+                {q} <span style={sx("color:#009CBB;font-size:18px;flex:none;transition:transform 0.25s ease,color 0.25s ease;display:inline-block")}>+</span>
               </summary>
               <p style={sx("margin:0;padding:0 0 20px;font-size:14.5px;line-height:1.65;color:#46626C")}>{a}</p>
             </details>

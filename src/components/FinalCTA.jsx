@@ -57,6 +57,20 @@ export default function FinalCTA() {
             {f.ctaSchedule}
           </a>
         </div>
+        <div style={sx("margin-top:20px")}>
+          <a
+            href="https://crm.xlentbrasil.com/wl-signup"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={sx(
+              "color:#FFC500;font-size:14px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:opacity 0.2s"
+            )}
+            className="hv-white"
+          >
+            <span style={sx("display:inline-block;width:6px;height:6px;border-radius:50%;background:#FFC500;animation:xf-blink 1.5s infinite")} />
+            {t.hero.freeTrialLink}
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -48,13 +48,25 @@ export default function Pricing() {
               src={xflowWhite}
               alt="XFlow XLENT"
               style={sx("height:36px;width:auto;align-self:flex-start;position:relative")}
+              width="128"
+              height="36"
+              loading="lazy"
             />
-            <div
-              style={sx(
-                "position:relative;margin-top:28px;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#7FD4E4"
-              )}
-            >
-              {p.planLabel}
+            <div style={sx("display:flex;align-items:center;justify-content:space-between;margin-top:28px;position:relative")}>
+              <div
+                style={sx(
+                  "font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#7FD4E4"
+                )}
+              >
+                {p.planLabel}
+              </div>
+              <span
+                style={sx(
+                  "background:rgba(255,197,0,0.15);color:#FFC500;border:1px solid rgba(255,197,0,0.4);padding:2px 8px;border-radius:99px;font-size:9.5px;font-weight:700;letter-spacing:0.03em"
+                )}
+              >
+                {p.freeTrialBadge}
+              </span>
             </div>
             <div
               style={sx(
@@ -89,9 +101,17 @@ export default function Pricing() {
               <span style={sx("white-space:nowrap")}>{p.ctaSchedule}</span>
             </a>
             <div
-              style={sx("position:relative;margin-top:14px;font-size:12.5px;color:#7E9BA5;text-align:center")}
+              style={sx("position:relative;margin-top:14px;font-size:12.5px;text-align:center")}
             >
-              {p.note}
+              <a
+                href="https://crm.xlentbrasil.com/wl-signup"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={sx("color:#FFC500;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:4px;transition:opacity 0.2s")}
+                className="hv-white"
+              >
+                {p.note} <span style={sx("font-size:10px")}>→</span>
+              </a>
             </div>
           </div>
           <div style={sx("background:#FFFFFF;padding:40px 38px")}>

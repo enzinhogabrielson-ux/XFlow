@@ -99,7 +99,7 @@ export default function Ribbon({ style }) {
 
     const uT = gl.getUniformLocation(prog, "u_time");
     const uR = gl.getUniformLocation(prog, "u_res");
-    const RES_SCALE = 0.55;
+    const RES_SCALE = 0.35;
 
     function resize() {
       const w = host.clientWidth || 2;
@@ -125,21 +125,28 @@ export default function Ribbon({ style }) {
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const t0 = performance.now();
     let raf;
+    let lastTime = performance.now();
+    const frameInterval = 1000 / 30; // 30 FPS limit
 
     function draw() {
       gl.uniform1f(uT, (performance.now() - t0) / 1000 + 60.0);
       gl.uniform2f(uR, canvas.width, canvas.height);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
-    function frame() {
+    function frame(time) {
       raf = requestAnimationFrame(frame);
       if (!visible) return;
-      draw();
+      
+      const elapsed = time - lastTime;
+      if (elapsed >= frameInterval) {
+        lastTime = time - (elapsed % frameInterval);
+        draw();
+      }
     }
     if (reduced) {
       draw();
     } else {
-      frame();
+      frame(performance.now());
     }
 
     return () => {

@@ -162,80 +162,82 @@ export default function PlatformShowcase() {
                   {ps.activeBadge}
                 </span>
               </div>
-              <div
-                style={sx(
-                  "display:grid;grid-template-columns:2fr 1.2fr 1fr 1fr;gap:0;border:1px solid rgba(0,49,65,0.08);border-radius:10px;overflow:hidden;font-size:10.5px"
-                )}
-              >
+              <div style={sx("overflow-x:auto;margin:0 -16px;padding:0 16px;-webkit-overflow-scrolling:touch")}>
                 <div
                   style={sx(
-                    "background:#F8FAFB;padding:8px 12px;font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#6B8089"
+                    "display:grid;grid-template-columns:2fr 1.2fr 1fr 1fr;gap:0;border:1px solid rgba(0,49,65,0.08);border-radius:10px;overflow:hidden;font-size:10.5px;min-width:540px"
                   )}
                 >
-                  {ps.columns.contact}
-                </div>
-                <div
-                  style={sx(
-                    "background:#F8FAFB;padding:8px 12px;font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#6B8089"
-                  )}
-                >
-                  {ps.columns.stage}
-                </div>
-                <div
-                  style={sx(
-                    "background:#F8FAFB;padding:8px 12px;font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#6B8089"
-                  )}
-                >
-                  {ps.columns.value}
-                </div>
-                <div
-                  style={sx(
-                    "background:#F8FAFB;padding:8px 12px;font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#6B8089"
-                  )}
-                >
-                  {ps.columns.tag}
-                </div>
-                {rows.map((row) => (
-                  <Fragment key={row.contact}>
-                    <div
-                      style={sx(
-                        "padding:9px 12px;border-top:1px solid rgba(0,49,65,0.06);color:#06222D;font-weight:500"
-                      )}
-                    >
-                      {row.contact}
-                    </div>
-                    <div
-                      style={{
-                        ...sx("padding:9px 12px;border-top:1px solid rgba(0,49,65,0.06)"),
-                        color: row.stageColor,
-                        fontWeight: row.stageWeight || 400,
-                      }}
-                    >
-                      {row.stage}
-                    </div>
-                    <div
-                      style={sx("padding:9px 12px;border-top:1px solid rgba(0,49,65,0.06);color:#06222D")}
-                    >
-                      {row.value}
-                    </div>
-                    <div
-                      style={sx("padding:9px 12px;border-top:1px solid rgba(0,49,65,0.06)")}
-                    >
-                      <span
+                  <div
+                    style={sx(
+                      "background:#F8FAFB;padding:8px 12px;font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#6B8089"
+                    )}
+                  >
+                    {ps.columns.contact}
+                  </div>
+                  <div
+                    style={sx(
+                      "background:#F8FAFB;padding:8px 12px;font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#6B8089"
+                    )}
+                  >
+                    {ps.columns.stage}
+                  </div>
+                  <div
+                    style={sx(
+                      "background:#F8FAFB;padding:8px 12px;font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#6B8089"
+                    )}
+                  >
+                    {ps.columns.value}
+                  </div>
+                  <div
+                    style={sx(
+                      "background:#F8FAFB;padding:8px 12px;font-family:'Geist Mono',monospace;font-size:8.5px;letter-spacing:0.06em;color:#6B8089"
+                    )}
+                  >
+                    {ps.columns.tag}
+                  </div>
+                  {rows.map((row) => (
+                    <Fragment key={row.contact}>
+                      <div
+                        style={sx(
+                          "padding:9px 12px;border-top:1px solid rgba(0,49,65,0.06);color:#06222D;font-weight:500"
+                        )}
+                      >
+                        {row.contact}
+                      </div>
+                      <div
                         style={{
-                          background: row.tagBg,
-                          color: row.tagColor,
-                          borderRadius: 999,
-                          padding: "2px 8px",
-                          fontSize: 9,
-                          fontWeight: 600,
+                          ...sx("padding:9px 12px;border-top:1px solid rgba(0,49,65,0.06)"),
+                          color: row.stageColor,
+                          fontWeight: row.stageWeight || 400,
                         }}
                       >
-                        {row.tag}
-                      </span>
-                    </div>
-                  </Fragment>
-                ))}
+                        {row.stage}
+                      </div>
+                      <div
+                        style={sx("padding:9px 12px;border-top:1px solid rgba(0,49,65,0.06);color:#06222D")}
+                      >
+                        {row.value}
+                      </div>
+                      <div
+                        style={sx("padding:9px 12px;border-top:1px solid rgba(0,49,65,0.06)")}
+                      >
+                        <span
+                          style={{
+                            background: row.tagBg,
+                            color: row.tagColor,
+                            borderRadius: 999,
+                            padding: "2px 8px",
+                            fontSize: 9,
+                            fontWeight: 600,
+                          }}
+                        >
+                          {row.tag}
+                        </span>
+                      </div>
+                    </Fragment>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

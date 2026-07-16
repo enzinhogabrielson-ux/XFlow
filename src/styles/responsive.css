@@ -35,7 +35,8 @@
     gap: 40px !important;
   }
   .xf-hero-mock {
-    justify-self: stretch !important;
+    justify-self: center !important;
+    margin: 0 auto !important;
     width: 100% !important;
     max-width: 480px;
   }
@@ -64,6 +65,17 @@
 
   .xf-decor {
     display: none !important;
+  }
+  .xf-header-inner {
+    padding: 0 24px !important;
+    height: 72px !important;
+    justify-content: space-between !important;
+  }
+  .xf-header-actions {
+    display: none !important;
+  }
+  .xf-mobile-menu-btn {
+    display: block !important;
   }
 }
 
@@ -118,16 +130,7 @@
   }
 
   .xf-header-inner {
-    padding: 10px 16px !important;
-    height: auto !important;
-    flex-wrap: wrap !important;
-    row-gap: 8px !important;
-  }
-  .xf-header-actions {
-    width: 100%;
-    justify-content: center !important;
-    flex-wrap: wrap !important;
-    row-gap: 8px !important;
+    padding: 0 16px !important;
   }
   .xf-quickstart-box {
     padding: 32px 22px !important;
